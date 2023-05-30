@@ -1,5 +1,4 @@
 #include<Stepper.h>
-#include<Serial.h>
 #define StepperPin1 8
 #define StepperPin2 9
 #define StepperPin3 10
@@ -7,7 +6,7 @@
 #define StartBtn 2
 #define LightSensor A0
 
-Stepper BFS(2048, StepperPin1, StepperPin2, StepperPin3, Stepperpin4);
+Stepper BFS(2048, StepperPin1, StepperPin2, StepperPin3, StepperPin4);
 
 void setup(){
   BFS.setSpeed(20);
