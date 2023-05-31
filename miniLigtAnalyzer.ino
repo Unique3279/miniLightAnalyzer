@@ -1,4 +1,4 @@
-#include<Stepper.h>                       // 이거 왜이럼;
+#include <Stepper.h>                       // 이거 왜이럼;
 #define StepperPin1 8
 #define StepperPin2 9
 #define StepperPin3 10
@@ -13,7 +13,7 @@ void getData(){
   detachInterrupt(0);                       // 버튼 여러번 눌림 방지 위해 인터럽트 중지
   for(cnt; cnt<=100; ++cnt){                // 구간 100분할
     BFS.step(/*length*/);
-    Serial.print(cnt); Serial.print(" ") Serial.println(analogRead(LightSensor));      
+    Serial.print(cnt); Serial.print(" "); Serial.println(analogRead(LightSensor));      
   }
   attachInterrupt(0, getData, FALLING);     // 인터럽트 재활성화
 }
