@@ -1,4 +1,4 @@
-#include <Stepper.h>                       // 이거 왜이럼;
+#include <Stepper.h>   // 이거 왜이럼; // 오 고침
 #define StepperPin1 8
 #define StepperPin2 9
 #define StepperPin3 10
@@ -7,12 +7,13 @@
 #define LightSensor A0
 
 Stepper BFS(2048, StepperPin1, StepperPin2, StepperPin3, StepperPin4);
+int len = 0;
 
 void getData(){
   int cnt = 0;                              // 현재 스텝 횟수(위치) 기록
   detachInterrupt(0);                       // 버튼 여러번 눌림 방지 위해 인터럽트 중지
   for(cnt; cnt<=100; ++cnt){                // 구간 100분할
-    BFS.step(/*length*/);
+    BFS.step(len);
     Serial.print(cnt); Serial.print(" "); Serial.println(analogRead(LightSensor));      
   }
   attachInterrupt(0, getData, FALLING);     // 인터럽트 재활성화
