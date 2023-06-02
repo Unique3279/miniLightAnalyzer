@@ -16,8 +16,19 @@
 
 Stepper BFS(2048, BFS_Pin1, BFS_Pin2, BFS_Pin3, BFS_Pin4);    //  2048 = 2pi radian
 Stepper BFS_2(2048, BFS2_Pin1, BFS2_Pin2, BFS2_Pin3, BFS2_Pin4);    //  stepper for automated reset
+
 int len = 0;
-int cnt = 0;
+int cnt = 0;                              // 현재 스텝 횟수(위치) 기록
+
+void getData(){
+  
+  detachInterrupt(0);                       // 버튼 여러번 눌림 방지 위해 인터럽트 중지
+  for(cnt; cnt<=100; ++cnt){                // 구간 100분할
+    BFS.step(len);
+    Serial.print(cnt); Serial.print(" "); Serial.println(analogRead(LightSensor));      
+  }
+  attachInterrupt(0, getData, FALLING);     // 인터럽트 재활성화
+}
 
 void setup(){
   BFS.setSpeed(20);

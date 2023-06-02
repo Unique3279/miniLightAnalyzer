@@ -5,8 +5,8 @@
             "includePath": [
                 "C:\\Program Files (x86)\\Arduino\\tools\\**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\lib\\gCc\\avr\\7.3.0\\include\\**",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\include", // 추가
+                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\lib\\gCc\\avr\\7.3.0\\include\\**", // 추가 - 자신의 PC 경로 확인 필요
                 "C:\\Program Files (x86)\\Arduino\\libraries\\**"
             ],
             "forcedInclude": [
