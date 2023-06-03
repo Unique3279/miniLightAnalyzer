@@ -72,3 +72,5 @@ void resetPos(){
 void loop(){
   //  대충 기능 구현
 }
+
+//이제 주노가 해주지 않을까요
