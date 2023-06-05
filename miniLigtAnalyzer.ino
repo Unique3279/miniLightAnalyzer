@@ -22,21 +22,8 @@
 Stepper BFS(2048, BFS_Pin1, BFS_Pin2, BFS_Pin3, BFS_Pin4);    //  2048 = 2pi radian
 Stepper BFS_2(2048, BFS2_Pin1, BFS2_Pin2, BFS2_Pin3, BFS2_Pin4);    //  stepper for automated reset
 
-int len = 0;                              // 빨리 계산해 씨끼야ㅐ
+int len = 0;                              // 빨리 계산해 씨끼야ㅐ  << 민영이가 해주겠지? 히히
 int cnt = 0;                              // 현재 스텝 횟수(위치) 기록
-
-// 이거 왜 두갠데
-/*
-void getData(){
-  
-  detachInterrupt(0);                       // 버튼 여러번 눌림 방지 위해 인터럽트 중지
-  for(cnt; cnt<=100; ++cnt){                // 구간 100분할
-    BFS.step(len);
-    Serial.print(cnt); Serial.print(" "); Serial.println(analogRead(LightSensor));      
-  }
-  attachInterrupt(0, getData, FALLING);     // 인터럽트 재활성화
-}
-*/
 
 void setup(){
   BFS.setSpeed(20);
@@ -60,7 +47,7 @@ void getData(){
     BFS.step(len);
     BFS_2.step(len);
     Serial.print(cnt); Serial.print(" "); Serial.println(analogRead(LightSensor) * calcLIC(cnt));      // 횟수 (tab) 데이터 형식으로 시리얼 출력
-    // F(n)만 곱해둔 상태. 끝나고 파이썬으로 G(lambda_n), H(theta_n) 곱해야 함
+    // F(n)만 곱해둔 상태. 끝나고 파이썬으로 G(lambda_n), H(theta_n) 곱해야 함 << 으윽;
   }
 
   attachInterrupt(digitalPinToInterrupt(ResetBtn), resetPos, FALLING);    // 리셋 버튼 재활성화
@@ -79,23 +66,24 @@ void resetPos(){
 }
 
 /* 스텝 수에 따른 각도 계산 함수 */
-void calcDegree(int step) {
+double calcDegree(int step) {
   return PI * (5 / 18) - atan((1 - 2 * step / MAX_STEP) * tan(PI / 6));
 }
 
 /* 스텝 수에 따른 파장 계산 함수 */
-void calcWavelength(int step) {
+double calcWavelength(int step) {
   return d * sin(calcDegree(step));
 }
 
 /* 스텝 수에 따른 빛의 세기 보정 함수 */
-void calcLIC(int step) {
+double calcLIC(int step) {
   return 1 + (1 - 2 * step / MAX_STEP) * (1 - 2 * step / MAX_STEP) * (1 / 3);
 }
 
 void loop(){
   delay(100);
-  //  대충 기능 구현 <- 여기에 특별히 뭐 쓸 거 있음...??
+  //  대충 기능 구현 <- 여기에 특별히 뭐 쓸 거 있음...?? << 몰?루
 }
 
 //이제 주노가 해주지 않을까요 <- 는 무슨 안함 ㅅㄱ
+//야이놈아 함수 자료형 안맞추냐
