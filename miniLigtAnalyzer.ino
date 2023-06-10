@@ -22,7 +22,7 @@
 Stepper BFS(2048, BFS_Pin1, BFS_Pin2, BFS_Pin3, BFS_Pin4);    //  2048 = 2pi radian
 Stepper BFS_2(2048, BFS2_Pin1, BFS2_Pin2, BFS2_Pin3, BFS2_Pin4);    //  stepper for automated reset
 
-int len = 0;                              // 빨리 계산해 씨끼야ㅐ  << 민영이가 해주겠지? 히히
+int len = 2 / (35 * PI) * 2048;                              // 한 스텝에서 도는 각도
 int cnt = 0;                              // 현재 스텝 횟수(위치) 기록
 
 void setup(){
